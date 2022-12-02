@@ -1,4 +1,5 @@
-# Dec 01, 2022 - https://www.trulia.com
+# Day 1
+Dec 01, 2022 - https://www.trulia.com
 Script to perform search on trulia.com and extract data from all results  
 
 ## How to run

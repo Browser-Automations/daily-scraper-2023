@@ -14,6 +14,7 @@
     <None Remove="HtmlAgilityPack" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="PuppeteerSharp" Version="8.0.0" />
     <PackageReference Include="PuppeteerExtraSharp6" Version="1.0.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
