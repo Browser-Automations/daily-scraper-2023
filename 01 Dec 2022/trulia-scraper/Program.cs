@@ -52,7 +52,7 @@ async Task StartScraping(string query)
         //await page.ClickAsync("[data-testid='tab-button-rent']");
         //await page.ClickAsync("[data-testid='tab-button-sold']");
 
-        await page.TypeAsync("[data-testid='location-search-input']", "33319", new PuppeteerSharp.Input.TypeOptions { Delay = 200 });
+        await page.TypeAsync("[data-testid='location-search-input']", query, new PuppeteerSharp.Input.TypeOptions { Delay = 200 });
         await page.WaitForTimeoutAsync(1500);
         await page.ClickAsync("[data-testid='location-search-button']");
 
