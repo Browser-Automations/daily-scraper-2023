@@ -2,6 +2,8 @@
 using HtmlAgilityPack;
 using PuppeteerExtraSharp;
 using PuppeteerExtraSharp.Plugins.ExtraStealth;
+using PuppeteerExtraSharp6;
+using PuppeteerExtraSharp6.Plugins.ExtraStealth;
 using PuppeteerSharp;
 using PuppeteerSharp.Input;
 using System.Globalization;
@@ -36,7 +38,7 @@ async Task StartScraping(string query)
     {
         Headless = false,
         DefaultViewport = null,
-        ExecutablePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        ExecutablePath = "/Users/fahadaltaf/Downloads/chromedriver 2",
     });
     var page = (await browser.PagesAsync())[0];
 
