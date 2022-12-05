@@ -118,6 +118,41 @@ if (section != null)
                 {
                     Console.WriteLine(HttpUtility.HtmlDecode(categoryNode.InnerText).Trim());
                 }
+
+                var summaryNode = document.QuerySelector("button > div > div:nth-child(1) > div > span");
+                if (summaryNode != null)
+                {
+                    Console.WriteLine(HttpUtility.HtmlDecode(summaryNode.InnerText).Trim());
+                }
+                var addressNode = document.QuerySelector("[aria-label*='Address:']");
+                if (addressNode != null)
+                {
+                    Console.WriteLine(HttpUtility.HtmlDecode(addressNode.InnerText).Trim());
+                }
+                var phoneNode = document.QuerySelector("[aria-label*='Phone:']");
+                if (phoneNode != null)
+                {
+                    Console.WriteLine(HttpUtility.HtmlDecode(phoneNode.InnerText).Trim());
+                }
+                var websiteNode = document.QuerySelector("[aria-label*='Website:']");
+                if (websiteNode != null)
+                {
+                    Console.WriteLine(HttpUtility.HtmlDecode(websiteNode.InnerText).Trim());
+
+                }
+                try
+                {
+                    var workHoursNode = document.QuerySelector("[aria-label*='Monday,']");
+                    if (workHoursNode != null)
+                    {
+                        Console.WriteLine(HttpUtility.HtmlDecode(workHoursNode.Attributes["aria-label"].Value).Trim());
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+                
                 Console.WriteLine("=====================");
             }
         }
