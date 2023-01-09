@@ -11,8 +11,14 @@
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
-    <PackageReference Include="PuppeteerExtraSharp" Version="1.3.2" />
-    <PackageReference Include="PuppeteerSharp" Version="7.1.0" />
+    <PackageReference Include="Microsoft.Playwright" Version="1.28.0" />
+    <PackageReference Include="PuppeteerSharp" Version="8.0.0" />
+    <PackageReference Include="PuppeteerExtraSharp6" Version="1.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Microsoft.Playwright" />
+    <None Remove="PuppeteerSharp" />
+    <None Remove="PuppeteerExtraSharp6" />
+  </ItemGroup>
 </Project>

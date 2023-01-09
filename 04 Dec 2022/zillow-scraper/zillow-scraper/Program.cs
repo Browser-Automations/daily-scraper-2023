@@ -1,9 +1,9 @@
-﻿
-
-using CsvHelper;
+﻿using CsvHelper;
 using HtmlAgilityPack;
 using PuppeteerExtraSharp;
 using PuppeteerExtraSharp.Plugins.ExtraStealth;
+using PuppeteerExtraSharp6;
+using PuppeteerExtraSharp6.Plugins.ExtraStealth;
 using PuppeteerSharp;
 using PuppeteerSharp.Input;
 using System.Globalization;
@@ -32,12 +32,13 @@ async Task StartScraping(string query)
     Console.WriteLine("Getting ready...");
     var extra = new PuppeteerExtra();
     extra.Use(new StealthPlugin());
-    using var browserFetcher = new BrowserFetcher();
-    await browserFetcher.DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
+    //using var browserFetcher = new BrowserFetcher();
+    //await browserFetcher.DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
     var browser = await extra.LaunchAsync(new LaunchOptions
     {
         Headless = false,
-        DefaultViewport = null
+        DefaultViewport = null,
+        ExecutablePath = "/Users/fahadaltaf/Downloads/chromedriver 2",
     });
     var page = (await browser.PagesAsync())[0];
 
@@ -46,15 +47,15 @@ async Task StartScraping(string query)
     {
         Console.WriteLine("https://www.zillow.com/homes/");
         await page.GoToAsync("https://www.zillow.com/homes/");
-
-        //Have to navigate solw otherwise website will not display any data
         await page.WaitForTimeoutAsync(3000);
-        var input = await page.QuerySelectorAsync("input[type='text']");
-        await input.ClickAsync(new ClickOptions { ClickCount = 3 });
-        await input.TypeAsync( query, new PuppeteerSharp.Input.TypeOptions { Delay = 200 });
+        await page.WaitForNavigationAsync();
+        //Have to navigate solw otherwise website will not display any data
+         
+        await page.ClickAsync("input[type='text']",new ClickOptions { ClickCount = 3 });
+        await page.TypeAsync("input[type='text']", query, new PuppeteerSharp.Input.TypeOptions { Delay = 200 });
         await page.Keyboard.PressAsync("Enter");
-
-        await page.WaitForTimeoutAsync(5000);
+        await page.WaitForNavigationAsync();
+        //await page.WaitForTimeoutAsync(5000);
 
         int pages = 1;
         for (int i = 1; i <= pages; i++)
